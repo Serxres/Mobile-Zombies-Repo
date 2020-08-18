@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerSelect : MonoBehaviour
 {
+    public GameObject player;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
@@ -22,20 +24,15 @@ public class PlayerSelect : MonoBehaviour
             if (hit)
             {
                 Debug.Log("Hit " + hitInfo.transform.gameObject.name);
-                if (hitInfo.transform.gameObject.tag == "Construction")
+                if (hitInfo.transform.gameObject.tag == "Player")
                 {
-                    Debug.Log("It's working!");
-                }
-                else
-                {
-                    Debug.Log("nopz");
+                    player.GetComponent<PlayerMovement>().beenSelected();
                 }
             }
             else
             {
                 Debug.Log("No hit");
             }
-            Debug.Log("Mouse is down");
         }
     }
 }
